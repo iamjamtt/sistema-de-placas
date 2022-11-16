@@ -13,7 +13,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-hover tabli-middler mb-0">
+                        <table class="table table-hover align-middle mb-0">
                             <thead class="table-light">
                                 <tr align="center">
                                     <th class="fw-bold col-1">#</th>

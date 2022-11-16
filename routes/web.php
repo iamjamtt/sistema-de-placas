@@ -10,10 +10,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('administrador');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('administrador')->middleware(['auth'])->group(function () {
+
+    Route::get('', [App\Http\Controllers\AdministradorController::class, 'index'])->name('admin.index');
+
+
+
+
+
+    Route::get('/vehiculos', [App\Http\Controllers\VehiculoController::class, 'index'])->name('admin.vehiculo.index');
+
+});

@@ -127,6 +127,7 @@ class Index extends Component
                 ->orWhere('nombre_completo', 'like', '%' . $this->search . '%')
                 ->orWhere('modelo', 'like', '%' . $this->search . '%')
                 ->orWhere('marca', 'like', '%' . $this->search . '%')
+                ->orderBy('vehiculo_id', 'desc')
                 ->get();
 
         return view('livewire.vehiculo.index', [

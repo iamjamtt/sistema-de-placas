@@ -47,7 +47,7 @@
                                         </td>
                                         <td align="center">
                                             <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalVehiculo" wire:click="cargar_vehiculo({{ $item->vehiculo_id }})"><i class="bx bx-edit"></i></button>
-                                            {{-- <button type="button" class="btn btn-danger btn-sm" wire:click="destroy({{ $item->vehiculo_id }})"><i class="bx bx-trash"></i></button> --}}
+                                            <button type="button" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach

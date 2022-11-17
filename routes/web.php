@@ -21,5 +21,7 @@ Route::prefix('administrador')->middleware(['auth'])->group(function () {
 
 
     Route::get('/vehiculos', [App\Http\Controllers\VehiculoController::class, 'index'])->name('admin.vehiculo.index');
+    Route::get('/control', [App\Http\Controllers\ControlController::class, 'index'])->name('admin.control.index');
+    Route::get('/reportes', [App\Http\Controllers\ControlController::class, 'index'])->name('admin.reportes.index');
 
 });

@@ -17,6 +17,7 @@ class Control extends Model
         'vehiculo_id',
         'hora_ingreso',
         'hora_salida',
+        'fecha',
     ];
 
     public $timestamps = false;

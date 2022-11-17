@@ -187,6 +187,20 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{ route('admin.control.index') }}">
+                                <i class="bx bx-cog icon nav-icon"></i>
+                                <span class="menu-item" data-key="t-calendar">Control</span>
+                            </a>
+                        </li>
+
+                        {{-- <li>
+                            <a href="{{ route('admin.reportes.index') }}">
+                                <i class="bx bx-bar-chart-alt-2 icon nav-icon"></i>
+                                <span class="menu-item" data-key="t-calendar">Reportes</span>
+                            </a>
+                        </li> --}}
+
                         {{-- <li>
                             <a href="javascript: void(0);" class="has-arrow">
                                 <i class="bx bx-store icon nav-icon"></i>
@@ -617,155 +631,6 @@
                             </form>
                         </div>
                     </div>
-                    <div class="dropdown d-inline-block language-switch">
-                        <button type="button" class="btn header-item" data-bs-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            <img class="header-lang-img" src="assets/images/flags/us.jpg" alt="Header Language"
-                                height="16">
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                                data-lang="eng">
-                                <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1"
-                                    height="12"> <span class="align-middle">English</span>
-                            </a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                                data-lang="sp">
-                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1"
-                                    height="12"> <span class="align-middle">Spanish</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                                data-lang="gr">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1"
-                                    height="12"> <span class="align-middle">German</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                                data-lang="it">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1"
-                                    height="12"> <span class="align-middle">Italian</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language"
-                                data-lang="ru">
-                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1"
-                                    height="12"> <span class="align-middle">Russian</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item noti-icon"
-                            id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i class="icon-sm" data-feather="bell"></i>
-                            <span class="noti-dot bg-danger rounded-pill">3</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                            aria-labelledby="page-header-notifications-dropdown">
-                            <div class="p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h5 class="m-0 font-size-15"> Notifications </h5>
-                                    </div>
-                                    <div class="col-auto">
-                                        <a href="javascript:void(0);" class="small"> Mark all as read</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-simplebar style="max-height: 250px;">
-                                <a href="" class="text-reset notification-item">
-                                    <div class="d-flex border-bottom align-items-start bg-light">
-                                        <div class="flex-shrink-0">
-                                            <img src="assets/images/users/avatar-3.jpg"
-                                                class="me-3 rounded-circle avatar-sm" alt="user-pic">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">Justin Verduzco</h6>
-                                            <div class="text-muted">
-                                                <p class="mb-1 font-size-13">Your task changed an issue from "In
-                                                    Progress" to <span class="badge badge-soft-success">Review</span>
-                                                </p>
-                                                <p class="mb-0 font-size-10 text-uppercase fw-bold"><i
-                                                        class="mdi mdi-clock-outline"></i> 1 hours ago</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="" class="text-reset notification-item">
-                                    <div class="d-flex border-bottom align-items-start">
-                                        <div class="flex-shrink-0">
-                                            <div class="avatar-sm me-3">
-                                                <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                                    <i class="bx bx-shopping-bag"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">New order has been placed</h6>
-                                            <div class="text-muted">
-                                                <p class="mb-1 font-size-13">Open the order confirmation or shipment
-                                                    confirmation.</p>
-                                                <p class="mb-0 font-size-10 text-uppercase fw-bold"><i
-                                                        class="mdi mdi-clock-outline"></i> 5 hours ago</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="" class="text-reset notification-item">
-                                    <div class="d-flex border-bottom align-items-start">
-                                        <div class="flex-shrink-0">
-                                            <div class="avatar-sm me-3">
-                                                <span
-                                                    class="avatar-title bg-soft-success text-success rounded-circle font-size-16">
-                                                    <i class="bx bx-cart"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">Your item is shipped</h6>
-                                            <div class="text-muted">
-                                                <p class="mb-1 font-size-13">Here is somthing that you might light
-                                                    like to know.</p>
-                                                <p class="mb-0 font-size-10 text-uppercase fw-bold"><i
-                                                        class="mdi mdi-clock-outline"></i> 1 day ago</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="" class="text-reset notification-item">
-                                    <div class="d-flex border-bottom align-items-start">
-                                        <div class="flex-shrink-0">
-                                            <img src="assets/images/users/avatar-4.jpg"
-                                                class="me-3 rounded-circle avatar-sm" alt="user-pic">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">Salena Layfield</h6>
-                                            <div class="text-muted">
-                                                <p class="mb-1 font-size-13">Yay ! Everything worked!</p>
-                                                <p class="mb-0 font-size-10 text-uppercase fw-bold"><i
-                                                        class="mdi mdi-clock-outline"></i> 3 days ago</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="p-2 border-top d-grid">
-                                <a class="btn btn-sm btn-link font-size-14 btn-block text-decoration-underline fw-bold text-center"
-                                    href="javascript:void(0)">
-                                    <span>View All <i class='bx bx-right-arrow-alt'></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="dropdown d-none d-sm-inline-block">
                         <button type="button" class="btn header-item light-dark" id="mode-setting-btn">
@@ -785,20 +650,6 @@
                             <a class="dropdown-item" href="contacts-profile.html"><i
                                     class='bx bx-user-circle text-muted font-size-18 align-middle me-1'></i> <span
                                     class="align-middle">My Account</span></a>
-                            <a class="dropdown-item" href="apps-chat.html"><i
-                                    class='bx bx-chat text-muted font-size-18 align-middle me-1'></i> <span
-                                    class="align-middle">Chat</span></a>
-                            <a class="dropdown-item" href="pages-faqs.html"><i
-                                    class='bx bx-buoy text-muted font-size-18 align-middle me-1'></i> <span
-                                    class="align-middle">Support</span></a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item d-flex align-items-center" href="#"><i
-                                    class='bx bx-cog text-muted font-size-18 align-middle me-1'></i> <span
-                                    class="align-middle me-3">Settings</span><span
-                                    class="badge badge-soft-success ms-auto">New</span></a>
-                            <a class="dropdown-item" href="auth-lock-screen.html"><i
-                                    class='bx bx-lock text-muted font-size-18 align-middle me-1'></i> <span
-                                    class="align-middle">Lock screen</span></a>
                             <a class="dropdown-item" href="auth-logout.html"><i
                                     class='bx bx-log-out text-muted font-size-18 align-middle me-1'></i> <span
                                     class="align-middle">Logout</span></a>

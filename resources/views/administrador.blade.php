@@ -46,7 +46,7 @@
                 <div class="d-flex">
                     <!-- LOGO -->
                     <div class="navbar-brand-box">
-                        <a href="index.html" class="logo logo-dark">
+                        <a href="" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="{{ asset('assets/images/logo-sm.svg') }}" alt="" height="22">
                             </span>
@@ -56,7 +56,7 @@
                             </span>
                         </a>
 
-                        <a href="index.html" class="logo logo-light">
+                        <a href="" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="{{ asset('assets/images/logo-sm.svg') }}" alt="" height="22">
                             </span>
@@ -138,7 +138,7 @@
 
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset('assets/images/logo-sm.svg') }}" alt="" height="22">
                     </span>
@@ -148,7 +148,7 @@
                     </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="" class="logo logo-light">
                     <span class="logo-lg">
                         <img src="{{ asset('assets/images/logo-sm.svg') }}" alt="" height="22"> <span
                             class="logo-txt">Sist. Placas</span>
@@ -686,9 +686,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="text-sm-end d-none d-sm-block">
-                                By <a
-                                    href="https://Themesbrand.com/" target="_blank"
-                                    class="text-reset">MendCoder</a>
+                                By <a class="text-reset">MendCoder</a>
                             </div>
                         </div>
                     </div>

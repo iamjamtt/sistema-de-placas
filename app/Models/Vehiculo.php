@@ -9,19 +9,20 @@ class Vehiculo extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "vehiculo_id";
-
-    protected $table = 'vehiculo';
+    protected $table = 'vehicles';
     protected $fillable = [
-        'vehiculo_id',
-        'vehiculo_placa',
-        'apellidos',
-        'nombres',
+        'placa',
+        'apellido',
+        'nombre',
         'nombre_completo',
-        'modelo',
         'marca',
-        'vehiculo_estado',
+        'modelo',
+        'estado',
     ];
 
-    public $timestamps = false;
+    // Control
+    public function control()
+    {
+        return $this->hasMany(Control::class, 'id_vehicles');
+    }
 }

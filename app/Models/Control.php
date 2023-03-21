@@ -9,22 +9,19 @@ class Control extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = "control_id";
-
-    protected $table = 'control';
+    protected $table = 'controls';
     protected $fillable = [
-        'control_id',
-        'vehiculo_id',
-        'hora_ingreso',
-        'hora_salida',
+        'id_vehicles',
+        'ingreso',
+        'salida',
         'fecha',
     ];
 
     public $timestamps = false;
 
     // Vehiuclo
-    public function Vehiculo(){
-        return $this->belongsTo(Vehiculo::class,
-        'vehiculo_id','vehiculo_id');
+    public function vehiculo()
+    {
+        return $this->belongsTo(Vehiculo::class, 'id_vehicles');
     }
 }

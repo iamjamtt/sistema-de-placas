@@ -23,7 +23,7 @@ class Index extends Component
     {
         if($this->modo == 1){
             $this->validateOnly($propertyName, [
-                'placa' => 'required|unique:vehiculo,vehiculo_placa',
+                'placa' => 'required|unique:vehicles,placa',
                 'apellido' => 'required|string',
                 'nombre' => 'required|string',
                 'marca' => 'nullable|string',
@@ -33,7 +33,7 @@ class Index extends Component
 
         }else{
             $this->validateOnly($propertyName, [
-                'placa' => 'required|unique:vehiculo,vehiculo_placa,'.$this->vehiculo_id.',vehiculo_id',
+                'placa' => 'required|unique:vehicles,placa,'.$this->vehiculo_id.',id',
                 'apellido' => 'required|string',
                 'nombre' => 'required|string',
                 'marca' => 'nullable|string',
@@ -53,6 +53,7 @@ class Index extends Component
     public function limpiar()
     {
         $this->resetErrorBag();
+        $this->resetValidation();
         $this->reset('placa', 'apellido', 'nombre', 'marca', 'modelo', 'estado');
         $this->modo = 1;
     }
@@ -62,20 +63,20 @@ class Index extends Component
         $this->limpiar();
         $this->modo = 2;
         $this->titulo = 'Modificar Vehiculo';
-        $this->vehiculo_id = $vehiculo->vehiculo_id;
-        $this->placa = $vehiculo->vehiculo_placa;
-        $this->apellido = $vehiculo->apellidos;
-        $this->nombre = $vehiculo->nombres;
+        $this->vehiculo_id = $vehiculo->id;
+        $this->placa = $vehiculo->placa;
+        $this->apellido = $vehiculo->apellido;
+        $this->nombre = $vehiculo->nombre;
         $this->marca = $vehiculo->marca;
         $this->modelo = $vehiculo->modelo;
-        $this->estado = $vehiculo->vehiculo_estado;
+        $this->estado = $vehiculo->estado;
     }
 
     public function guardar_vehiculo()
     {
         if($this->modo == 1){
             $this->validate([
-                'placa' => 'required|unique:vehiculo,vehiculo_placa',
+                'placa' => 'required|unique:vehicles,placa',
                 'apellido' => 'required|string',
                 'nombre' => 'required|string',
                 'marca' => 'nullable|string',
@@ -84,19 +85,25 @@ class Index extends Component
             ]);
 
             Vehiculo::create([
-                'vehiculo_placa' => strtoupper($this->placa),
-                'apellidos' => $this->apellido,
-                'nombres' => $this->nombre,
+                'placa' => strtoupper($this->placa),
+                'apellido' => $this->apellido,
+                'nombre' => $this->nombre,
                 'nombre_completo' => $this->apellido . ', ' . $this->nombre,
-                'modelo' => $this->modelo,
                 'marca' => $this->marca,
-                'vehiculo_estado' => 1,
+                'modelo' => $this->modelo,
+                'estado' => 1,
             ]);
 
-            $this->dispatchBrowserEvent('notificacionVehiculo', ['message' =>'Datos de vehiculo agregado satisfactoriamente.', 'color' => '#33a186']); //danger #fa6374
+            $this->dispatchBrowserEvent('alerta-registro', [
+                'title' => '¡Exito!',
+                'text' => 'Los datos del vehiculo se registraron satisfactoriamente',
+                'icon' => 'success',
+                'confirmButtonText' => 'Aceptar',
+                'color' => 'primary'
+            ]);
         }else{
             $this->validate([
-                'placa' => 'required|unique:vehiculo,vehiculo_placa,'.$this->vehiculo_id.',vehiculo_id',
+                'placa' => 'required|unique:vehicles,placa,'.$this->vehiculo_id.',id',
                 'apellido' => 'required|string',
                 'nombre' => 'required|string',
                 'marca' => 'nullable|string',
@@ -105,29 +112,46 @@ class Index extends Component
             ]);
 
             $vehiculo = Vehiculo::find($this->vehiculo_id);
-            $vehiculo->vehiculo_placa = $this->placa;
-            $vehiculo->apellidos = $this->apellido;
-            $vehiculo->nombres = $this->nombre;
+            $vehiculo->placa = $this->placa;
+            $vehiculo->apellido = $this->apellido;
+            $vehiculo->nombre = $this->nombre;
             $vehiculo->nombre_completo = $this->apellido . ', ' . $this->nombre;
-            $vehiculo->modelo = $this->modelo;
             $vehiculo->marca = $this->marca;
-            $vehiculo->vehiculo_estado = $this->estado;
+            $vehiculo->modelo = $this->modelo;
+            $vehiculo->estado = $this->estado;
             $vehiculo->save();
 
-            $this->dispatchBrowserEvent('notificacionVehiculo', ['message' =>'Datos de vehiculo actualizado satisfactoriamente.', 'color' => '#33a186']); //danger #fa6374
+            $this->dispatchBrowserEvent('alerta-registro', [
+                'title' => '¡Exito!',
+                'text' => 'Los datos del vehiculo se modificaron satisfactoriamente.',
+                'icon' => 'success',
+                'confirmButtonText' => 'Aceptar',
+                'color' => 'primary'
+            ]);
         }
 
-        $this->dispatchBrowserEvent('modalVehiculo');
+        $this->dispatchBrowserEvent('modal_registro', ['action' => 'hide']);
         $this->limpiar();
+    }
+
+    public function delete_registro(Vehiculo $vehiculo)
+    {
+        $this->dispatchBrowserEvent('alerta-registro', [
+            'title' => '¡Error!',
+            'text' => 'Esta función no esta disponible en este momento.',
+            'icon' => 'error',
+            'confirmButtonText' => 'Aceptar',
+            'color' => 'danger'
+        ]);
     }
 
     public function render()
     {
-        $vehiculo_model = Vehiculo::where('vehiculo_placa', 'like', '%' . $this->search . '%')
+        $vehiculo_model = Vehiculo::where('placa', 'like', '%' . $this->search . '%')
                 ->orWhere('nombre_completo', 'like', '%' . $this->search . '%')
                 ->orWhere('modelo', 'like', '%' . $this->search . '%')
                 ->orWhere('marca', 'like', '%' . $this->search . '%')
-                ->orderBy('vehiculo_id', 'desc')
+                ->orderBy('id', 'desc')
                 ->get();
 
         return view('livewire.vehiculo.index', [

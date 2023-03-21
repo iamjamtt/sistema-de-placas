@@ -17,9 +17,9 @@ class AdministradorController extends Controller
         $control_week_count = Control::whereBetween('fecha', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
         $contol_month_count = Control::whereMonth('fecha', Carbon::now()->month)->count();
 
-        $control_barra = Control::select('fecha', Control::raw('count(control_id) as cantidad'))
+        $control_barra = Control::select('fecha', Control::raw('count(id) as cantidad'))
                 ->groupBy('fecha')
-                ->orderBy(Control::raw('count(control_id)'), 'DESC')
+                ->orderBy(Control::raw('count(id)'), 'DESC')
                 ->take(5)->skip(0)->get();
 
         $count = [];
@@ -41,5 +41,10 @@ class AdministradorController extends Controller
             'contol_month_count' => $contol_month_count,
             'data' => $data,
         ]);
+    }
+
+    public function login()
+    {
+        return view('auth.login');
     }
 }

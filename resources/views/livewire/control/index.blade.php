@@ -1,142 +1,140 @@
 <div>
-    <div class="row">
-        <div class="col-12">
-            <div class="mb-3">
-                <button type="button" class="btn btn-success waves-effect btn-label waves-light w-lg" wire:click="exportar_excel()"><i
-                        class="bx bx-file label-icon"></i> Excel</button>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
-                            {{-- <label class="col-form-label">Buscar:</label> --}}
-                            <input type="search" class="form-control" wire:model="search" placeholder="Buscar...">
-                        </div>
+    <div id="kt_app_toolbar" class="app-toolbar  pt-7 pt-lg-10 ">
+        <!--begin::Toolbar container-->
+        <div id="kt_app_toolbar_container"
+            class="app-container  container-fluid d-flex align-items-stretch ">
+            <!--begin::Toolbar wrapper-->
+            <div class="app-toolbar-wrapper d-flex flex-stack flex-wrap gap-4 w-100">
+                <!--begin::Page title-->
+                <div class="page-title d-flex flex-column justify-content-center gap-1 me-3">
+                    <!--begin::Title-->
+                    <h1
+                        class="page-heading d-flex flex-column justify-content-center text-dark fw-bold fs-3 m-0">
+                        Control de Vehiculos
+                    </h1>
+                    <!--end::Title-->
 
-                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
-                            {{-- <label class="col-form-label">Fecha:</label> --}}
-                            <input type="date" class="form-control" wire:model="fecha">
-                        </div>
+                    <!--begin::Breadcrumb-->
+                    <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0">
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-muted">
+                            <a href="{{ route('admin.index') }}"
+                                class="text-muted text-hover-primary">
+                                Home </a>
+                        </li>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item">
+                            <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                        </li>
+                        <!--end::Item-->
 
-                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
-                            <button class="btn btn-secondary fw-bold w-lg" wire:click="limpiar()">Limpiar</button>
-                        </div>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table table-hover align-middle mb-0">
-                            <thead class="table-light">
-                                <tr align="center">
-                                    <th class="fw-bold col-1">#</th>
-                                    <th class="fw-bold col-2">Placa</th>
-                                    <th class="fw-bold col-4">Apellidos y Nombres</th>
-                                    <th class="fw-bold col-2">Ingreso</th>
-                                    <th class="fw-bold col-2">Salida</th>
-                                    <th class="fw-bold col-1">Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if ($control_model->count() == 0)
-                                    <tr>
-                                        <td colspan="6" align="center" class="text-muted">No hay registros</td>
-                                    </tr>
-                                @else
-                                    @foreach ($control_model as $item)
-                                    <tr>
-                                        <td align="center" class="fw-bold" scope="row">{{ $item->control_id }}</td>
-                                        <td align="center">{{ $item->vehiculo_placa }}</td>
-                                        <td>{{ $item->nombre_completo }}</td>
-                                        <td align="center">{{ $item->hora_ingreso }}</td>
-                                        <td align="center">{{ $item->hora_salida }}</td>
-                                        <td align="center">
-                                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalVehiculo"><i class="bx bx-edit"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
+                        <!--begin::Item-->
+                        <li class="breadcrumb-item text-muted">
+                            Control </li>
+                        <!--end::Item-->
+                    </ul>
+                    <!--end::Breadcrumb-->
                 </div>
+                <!--end::Page title-->
+                <!--begin::Actions-->
+                <div class="d-flex align-items-center gap-2 gap-lg-3">
+                    <button type="button" class="btn btn-primary waves-effect btn-label waves-light w-lg" wire:click="exportar_excel()">
+                        <i class="las la-file-excel label-icon fs-2"></i> Excel
+                    </button>
+                </div>
+                <!--end::Actions-->
             </div>
+            <!--end::Toolbar wrapper-->
         </div>
+        <!--end::Toolbar container-->
     </div>
+    <div class="d-flex flex-column flex-column-fluid">
+        <!--begin::Content-->
+        <div id="kt_app_content" class="app-content flex-column-fluid">
+            <!--begin::Content container-->
+            <div id="kt_app_content_container" class="app-container container-fluid">
+                <!--begin::Row-->
+                <div class="row g-5 g-xl-10">
+                    <!--begin::Col-->
+                    <div class="col-md-12 mb-md-5 mb-xl-10">
+                        <!--begin::Row-->
+                        <div class="row g-5">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
+                                            {{-- <label class="col-form-label">Buscar:</label> --}}
+                                            <input type="search" class="form-control" wire:model="search" placeholder="Buscar...">
+                                        </div>
 
-    {{-- <div wire:ignore.self class="modal fade" id="modalVehiculo" tabindex="-1" aria-labelledby="modalVehiculoLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalVehiculoLabel">{{ $titulo }}</h1>
-                    <button type="button" class="btn-close" wire:click="limpiar()" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
+                                            {{-- <label class="col-form-label">Fecha:</label> --}}
+                                            <input type="date" class="form-control" wire:model="fecha">
+                                        </div>
+
+                                        <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6 col-sm-12 mb-3">
+                                            <button class="btn btn-secondary fw-bold w-lg" wire:click="limpiar()">Limpiar</button>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-rounded border gy-5 gs-5 align-middle mb-0">
+                                            <thead class="bg-light-primary">
+                                                <tr align="center" class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                                    <th>#</th>
+                                                    <th>Placa</th>
+                                                    <th>Apellidos y Nombres</th>
+                                                    <th>Ingreso</th>
+                                                    <th>Salida</th>
+                                                    {{-- <th>Acciones</th> --}}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if ($control_model->count() == 0)
+                                                    <tr>
+                                                        <td colspan="6" align="center" class="text-muted">No hay registros</td>
+                                                    </tr>
+                                                @else
+                                                    @foreach ($control_model as $item)
+                                                    <tr class="fs-5">
+                                                        <td align="center" class="fw-bold" scope="row">{{ $item->id }}</td>
+                                                        <td align="center" class="fw-bold">{{ $item->placa }}</td>
+                                                        <td>{{ $item->nombre_completo }}</td>
+                                                        <td align="center">
+                                                            @if ($item->ingreso )
+                                                                {{ date('h:i a d/m/Y', strtotime($item->ingreso)) }}
+                                                            @else
+                                                                ---
+                                                            @endif
+                                                        </td>
+                                                        <td align="center">
+                                                            @if ($item->salida )
+                                                                {{ date('h:i a d/m/Y', strtotime($item->salida)) }}
+                                                            @else
+                                                                ---
+                                                            @endif
+                                                        </td>
+                                                        {{-- <td align="center">
+                                                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalVehiculo"><i class="bx bx-edit"></i></button>
+                                                            <button type="button" class="btn btn-danger btn-sm"><i class="bx bx-trash"></i></button>
+                                                        </td> --}}
+                                                    </tr>
+                                                    @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Col-->
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-2">
-                            <label class="col-form-label">Placa: <span class="text-danger ">*</span></label>
-                            <input type="text" class="form-control @error('placa') is-invalid @enderror" wire:model="placa" placeholder="Ingrese la placa">
-                            @error('placa')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Apellido: <span class="text-danger ">*</span></label>
-                            <input type="text" class="form-control @error('apellido') is-invalid @enderror" wire:model="apellido" placeholder="Ingrese su apellido">
-                            @error('apellido')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Nombre: <span class="text-danger ">*</span></label>
-                            <input type="text" class="form-control @error('nombre') is-invalid @enderror" wire:model="nombre" placeholder="Ingrese su nombre">
-                            @error('nombre')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Marca: <span class="text-danger ">*</span></label>
-                            <input type="text" class="form-control @error('marca') is-invalid @enderror" wire:model="marca" placeholder="Ingrese la marca del vehiculo">
-                            @error('marca')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="mb-2">
-                            <label class="col-form-label">Modelo:</label>
-                            <input type="text" class="form-control @error('modelo') is-invalid @enderror" wire:model="modelo" placeholder="Ingrese el modelo del vehiculo">
-                            @error('modelo')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        @if ($modo == 2)
-                        <div class="mb-2">
-                            <label class="col-form-label">Estado:</label>
-                            <select class="form-select @error('estado') is-invalid @enderror" wire:model="estado">
-                                <option value="1">Activo</option>
-                                <option value="0">Inactivo</option>
-                            </select>
-                            @error('estado')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        @endif
-                    </form>
-                </div>
-                <div class="modal-footer d-flex justify-content-between">
-                    <button type="button" wire:click="limpiar()" class="btn btn-secondary w-md" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" wire:click="guardar_vehiculo()" class="btn btn-primary w-md">Guardar</button>
-                </div>
+                <!--end::Row-->
             </div>
+            <!--end::Content container-->
         </div>
-    </div> --}}
+        <!--end::Content-->
+    </div>
 </div>

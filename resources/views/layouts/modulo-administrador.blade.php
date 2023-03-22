@@ -17,9 +17,9 @@
     <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+    @yield('styles')
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     @livewireStyles()
 </head>
 <!--end::Head-->
@@ -79,7 +79,7 @@
                         </div>
                         <!--begin::Logo image-->
                         <a href="#">
-                            <img alt="Logo" src="{{ asset('assets/media/logo.svg') }}" class="h-30px" />
+                            <img alt="Logo" src="{{ asset('assets/media/logo.png') }}" class="h-30px" />
                         </a>
                         <!--end::Logo image-->
                     </div>
@@ -188,7 +188,7 @@
                                 <!--begin::Menu Item-->
                                 <div class="menu-item">
                                     <!--begin::Menu link-->
-                                    <a class="menu-link" href="#">
+                                    <a class="menu-link {{ request()->is('administrador/control') ? 'active' : '' }}" href="{{ route('admin.control.index') }}">
                                         <!--begin::Icon-->
                                         <span class="menu-icon">
                                             <i class="fonticon-stats fs-2"></i>

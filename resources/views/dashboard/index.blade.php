@@ -1,4 +1,6 @@
 @extends('layouts.modulo-administrador')
+@section('styles')
+@endsection
 @section('content')
 <div id="kt_app_toolbar" class="app-toolbar  pt-7 pt-lg-10 ">
     <!--begin::Toolbar container-->
@@ -160,7 +162,12 @@
 
         Highcharts.chart('reporte', {
             chart: {
-                type: 'column'
+                type: 'column',
+                // backgroundColor: '#003032',
+                style: {
+                    color: '#ffffff',
+                    fontFamily: 'Inter, sans-serif'
+                }
             },
             title: {
                 text: 'REPORTE DE CONTROL DE VEHICULOS'

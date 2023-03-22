@@ -69,16 +69,16 @@
                                         </div>
                                     </div>
                                     <div class="table-responsive">
-                                        <table class="table table-hover rounded align-middle mb-0">
-                                            <thead class="bg-light-info">
-                                                <tr align="center">
-                                                    <th class="fw-bold col-1">#</th>
-                                                    <th class="fw-bold col-1">Placa</th>
-                                                    <th class="fw-bold col-3">Apellidos y Nombres</th>
-                                                    <th class="fw-bold col-2">Marca</th>
-                                                    <th class="fw-bold col-2">Modelo</th>
-                                                    <th class="fw-bold col-2">Estado</th>
-                                                    <th class="fw-bold col-1">Acciones</th>
+                                        <table class="table table-hover table-rounded border gy-5 gs-5 align-middle mb-0">
+                                            <thead class="bg-light-primary">
+                                                <tr align="center" class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                                    <th>#</th>
+                                                    <th>Placa</th>
+                                                    <th>Apellidos y Nombres</th>
+                                                    <th>Marca</th>
+                                                    <th>Modelo</th>
+                                                    <th>Estado</th>
+                                                    <th>Acciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -88,9 +88,9 @@
                                                     </tr>
                                                 @else
                                                     @foreach ($vehiculo_model as $item)
-                                                    <tr>
+                                                    <tr class="fs-5">
                                                         <td align="center" class="fw-bold" scope="row">{{ $item->id }}</td>
-                                                        <td align="center">{{ $item->placa }}</td>
+                                                        <td align="center" class="fw-bold">{{ $item->placa }}</td>
                                                         <td>{{ $item->nombre_completo }}</td>
                                                         <td align="center">{{ $item->marca }}</td>
                                                         <td align="center">{{ $item->modelo }}</td>

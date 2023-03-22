@@ -40,25 +40,25 @@ class Index extends Component
         $buscar = $this->search;
 
         if($fecha){
-            $this->control_model = Control::join('vehiculo', 'vehiculo.vehiculo_id', '=', 'control.vehiculo_id')
+            $this->control_model = Control::join('vehicles', 'vehicles.id', '=', 'controls.id_vehicle')
                     ->where(function($query) use ($fecha){
-                        $query->where('control.fecha', $fecha);
+                        $query->where('controls.fecha', $fecha);
                     })
                     ->where(function($query) use ($buscar){
-                        $query->where('vehiculo.vehiculo_placa', 'like', '%' . $buscar . '%')
-                        ->orWhere('vehiculo.nombre_completo', 'like', '%' . $buscar . '%')
-                        ->orWhere('control.control_id', 'like', '%' . $buscar . '%');
+                        $query->where('vehicles.placa', 'like', '%' . $buscar . '%')
+                        ->orWhere('vehicles.nombre_completo', 'like', '%' . $buscar . '%')
+                        ->orWhere('controls.id', 'like', '%' . $buscar . '%');
                         })
-                    ->orderBy('control.control_id', 'desc')
+                    ->orderBy('controls.id', 'desc')
                     ->get();
         }else{
-            $this->control_model = Control::join('vehiculo', 'vehiculo.vehiculo_id', '=', 'control.vehiculo_id')
+            $this->control_model = Control::join('vehicles', 'vehicles.id', '=', 'controls.id_vehicle')
                     ->where(function($query) use ($buscar){
-                        $query->where('vehiculo.vehiculo_placa', 'like', '%' . $buscar . '%')
-                        ->orWhere('vehiculo.nombre_completo', 'like', '%' . $buscar . '%')
-                        ->orWhere('control.control_id', 'like', '%' . $buscar . '%');
+                        $query->where('vehicles.placa', 'like', '%' . $buscar . '%')
+                        ->orWhere('vehicles.nombre_completo', 'like', '%' . $buscar . '%')
+                        ->orWhere('controls.id', 'like', '%' . $buscar . '%');
                         })
-                    ->orderBy('control.control_id', 'desc')
+                    ->orderBy('controls.id', 'desc')
                     ->get();
         }
 
